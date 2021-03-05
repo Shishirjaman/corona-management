@@ -1,0 +1,58 @@
+{%extends 'coronalab/main.html' %}
+{% block content %}
+<br>
+<div class="row">
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5 style="text-align: center;">{{user.name}}</h5>
+                        <hr>
+                </div>
+        </div>
+
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5>Contact Information</h5>
+                        <hr>
+                        <h5>Email : {{user.email}}</h5>
+                        <h5>Contact Number : {{user.phone}}</h5>
+                        <h5>Address : {{user.address}}</h5>
+                </div>
+        </div>
+
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5>Total Number of Tests</h5>
+                        <hr>
+                        <h1 style=" text-align: center ; padding: 10px;">{{test_count}}</h1>
+                </div>
+        </div>
+</div>
+<br>
+
+
+<div class="row">
+        <div class="col-md">
+                <div class="card card-body">
+                        <table class="table table-sm">
+                                <tr>
+                                        <th>Tested From</th>
+                                        <th>Date Tested</th>
+                                        <th>Status</th>
+                                        <th>Update</th>
+                                        <th>Remove</th>
+                                </tr>
+                                {% for test in tests %}
+                                <tr>
+                                        <td>{{test.testcenter.name}}</td>
+                                        <td>{{test.date}}</td>
+                                        <td>{{test.status}}</td>
+                                        <td><a class="btn btn-warning btn-sm" href="{% url 'update_request' test.id %}">Update</a></td>
+                                        <td><a class="btn btn-danger btn-sm" href="{% url 'delete_request' test.id %}">Remove</a></td>
+                                </tr>
+                                {% endfor %}
+                        </table>
+                </div>
+        </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<div class="container">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+
+        data: {
+            datasets: [{
+                data: ["{{total_pos.dailypositive__sum|safe}}",
+                        "{{total_rec.dailyrecoverd__sum | safe}}",
+                        "{{total_death.dailydeath__sum | safe}}"
+                ],
+                backgroundColor: [
+                    "#1c5ad6",
+                    "#32a879",
+                    "#e60505"
+                ]
+            }],
+            labels: [
+                "Total Positive Cases",
+                "Total Recovered",
+                "Total Death Cases"
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'World COVID Status',
+            },
+            legend: {
+                disblay: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            }
+
+        }
+
+
+    });
+
+</script>
+</body>
+</html>

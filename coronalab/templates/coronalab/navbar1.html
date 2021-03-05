@@ -1,0 +1,20 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark " style = "background-color:#7abecc">
+    <img src="{% static 'image/corona.png' %}" alt="" style=" height:40px; width: 40px; margin-right: 5px;">
+    <a class="navbar-brand" href="{% url 'home' %}">Corona Lab Test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"style="text-align:right;">
+      <ul class="navbar-nav mr-auto navbar-right" >
+        <li class="nav-item active">
+          <a class="nav-link  navbar-right" href="{% url 'login' %}">Log in</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link navbar-right" href="{% url 'registerpage'%}">Register</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>

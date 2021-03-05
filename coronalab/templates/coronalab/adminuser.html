@@ -1,0 +1,56 @@
+{%extends 'coronalab/main.html' %}
+    {% block content %}
+    {% include 'coronalab/status.html' %}
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5 style="text-align: center;">Users</h5>
+            <hr>
+            <div class="card card-body">
+            
+                <table class="table table-sm">
+                    <tr>
+                        <th>Info</th>
+                        <th>User</th>
+                        <th>Phone</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'user' user.id %}">View</a></td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5 style="text-align: center;">Test Results</h5>
+            <hr>
+            <div class="card card-body">
+                
+                <table class="table table-sm">
+                    <tr>
+                        <th>Name</th>
+                        <th>Tested From</th>
+                        <th>Date tested</th>
+                        <th>status</th>
+                        <th>update</th>
+                        <th>remove</th>
+                    </tr>
+                    {% for test in tests %}
+                    <tr>
+                        <td>{{test.user.name}}</td>
+                        <td>{{test.testcenter.name}}</td>
+                        <td>{{test.date}}</td>
+                        <td>{{test.status}}</td>
+                        <td><a class="btn btn-primary btn-sm" href="{% url 'update_request' test.id %}">Update</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'delete_request' test.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

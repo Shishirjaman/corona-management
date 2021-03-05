@@ -1,0 +1,56 @@
+{%extends 'coronalab/main.html' %}
+{% block content %}
+<br>
+<div class="row">
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5 style="text-align: center;">{{user.name}}</h5>
+                        <hr>
+                        <a class="btn btn-outline-warning btn-sm btn-block" href="{% url 'update_profile' user.id %}">Update User</a>
+                        <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'request_test' user.id %}">Request for Test</a>
+                </div>
+        </div>
+
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5>Contact Information</h5>
+                        <hr>
+                        <h5>Email :{{user.email}}</h5>
+                        <h5>Contact Number : {{user.phone}}</h5>
+                        <h5>Address : {{user.address}}</h5>
+                </div>
+        </div>
+
+        <div class="col-md">
+                <div class="card card-body">
+                        <h5>Total Number of Tests</h5>
+                        <hr>
+                        <h1 style=" text-align: center ; padding: 10px;">{{test_count}}</h1>
+                </div>
+        </div>
+</div>
+<br>
+
+
+<div class="row">
+        <div class="col-md">
+                <div class="card card-body">
+                        <table class="table table-sm">
+                                <tr>
+                                        <th>Tested From</th>
+                                        <th>Date Tested</th>
+                                        <th>Status</th>
+                                </tr>
+                                {% for test in tests %}
+                                <tr>
+                                        <td>{{test.testcenter.name}}</td>
+                                        <td>{{test.date}}</td>
+                                        <td>{{test.status}}</td>
+                                </tr>
+                                {% endfor %}
+                        </table>
+                </div>
+        </div>
+</div>
+
+{% endblock %}

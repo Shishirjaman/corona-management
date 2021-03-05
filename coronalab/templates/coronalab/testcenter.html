@@ -1,0 +1,33 @@
+{%extends 'coronalab/main.html' %}
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Dedicated Test Centers</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>Phone Number</th>
+							<th>Address</th>
+						</tr>
+
+						{% for i in testcenter %}
+							<tr>
+								<td>{{i.name}}</td>
+								<td>{{i.phone}}</td>
+								<td>{{i.address}}</td>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}
